@@ -3,28 +3,32 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #4CAF50;
-    color: white;
+    background-color: white; /* Change background to white */
+    color: #333; /* Default text color */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
   }
   
   .navbar h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem; /* Increase font size for the website name */
+    font-family: 'Georgia, serif'; /* Set to a distinct font */
+    color: #2e7d32; /* Dark text color */
   }
   
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem; /* Increase spacing between links */
   }
   
   .nav-links a {
-    color: white;
+    color: grey; /* Start with grey color */
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition for color change */
   }
   
   .nav-links a:hover {
-    text-decoration: underline;
+    color: #2e7d32; /* Tree green on hover */
   }
   
