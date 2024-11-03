@@ -1,0 +1,50 @@
+{
+    "name": "calmanaut-server",
+    "author": "cse110-team8-fa24",
+    "license": "ISC",
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "npx tsc && npx tsc-alias",
+        "clean": "rm -rf out && rm tsconfig.tsbuildinfo",
+        "lint": "eslint . --ext .ts",
+        "lint-fix": "eslint . --ext .ts --fix",
+        "start": "npm run build && node out/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cse110-team8-fa24/calmanaut-server.git"
+    },
+    "bugs": {
+        "url": "https://github.com/cse110-team8-fa24/calmanaut-server/issues"
+    },
+    "homepage": "https://github.com/cse110-team8-fa24/calmanaut-server#readme",
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "express-session": "^1.18.1",
+        "knex": "^3.1.0",
+        "lodash": "^4.17.21",
+        "passport": "^0.7.0",
+        "passport-local": "^1.0.0",
+        "pg": "^8.13.1"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.2",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/express-session": "^1.18.0",
+        "@types/lodash": "^4.17.13",
+        "@types/node": "^22.8.7",
+        "@types/passport": "^1.0.17",
+        "@types/passport-local": "^1.0.38",
+        "@typescript-eslint/eslint-plugin": "^8.12.2",
+        "@typescript-eslint/parser": "^8.12.2",
+        "eslint": "^9.14.0",
+        "tsc-alias": "^1.8.10",
+        "typescript": "^5.6.3"
+    }
+}
