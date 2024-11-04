@@ -17,15 +17,19 @@ declare global {
 export function initialize(): Express.RequestHandler[] {
     const verify: PassportLocal.VerifyFunction = async (username, password, done) => {
         try {
-            if (Buffer.byteLength(password) > 72)
+            if (Buffer.byteLength(password) > 72) {
                 done(null, false, { message: "Password longer than 72 bytes" });
+                return;
+            }
 
             const user = await Db.Pg<Models.User>("users")
                 .where("username", username)
                 .first();
 
-            if (user === undefined || !await Bcrypt.compare(password, user.passhash))
+            if (user === undefined || !await Bcrypt.compare(password, user.passhash)) {
                 done(null, false, { message: "Incorrect credentials." });
+                return;
+            }
 
             done(null, user);
         } catch (e) {

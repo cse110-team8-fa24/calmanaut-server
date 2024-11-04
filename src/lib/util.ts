@@ -1,11 +1,16 @@
 import Express from "express";
 import _ from "lodash";
 
+import * as Constants from "@~/lib/constants.js";
+
 export function error(e: unknown) {
     if (e instanceof Error)
         console.error(e, e.stack);
     else
         console.error(e);
+
+    // if (Constants.NODE_ENV === "test")
+    //     throw e;
 }
 
 export function reduce<TFrom, TTo extends object>(from: NonNullable<TFrom>, to: { Default: TTo }) {
