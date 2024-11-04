@@ -36,8 +36,9 @@ const get: Express.RequestHandler = async (req, res, next) => {
                 pathname: `/users/${user.id}`,
                 query: req.query as QueryString.ParsedUrlQueryInput,
             }));
+            return;
         }
-
+        
         const user = await Db.Pg<Models.User>("users")
             .where("id", id)
             .first();

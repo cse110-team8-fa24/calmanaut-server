@@ -7,7 +7,7 @@ import * as Constants from "@~/lib/constants.js";
 
 console.log(Constants);
 
-const app = Express();
+export const app = Express();
 
 const corsOptions: Cors.CorsOptions = {
     origin: Constants.ORIGIN,
@@ -38,4 +38,4 @@ app.use((_req: Express.Request, res: Express.Response) => {
     res.status(404).send("API endpoint does not exist");
 });
 
-app.listen(Constants.PORT, () => console.log(`Listening on port ${Constants.PORT}`));
+export const server = app.listen(Constants.PORT, () => console.log(`Listening on port ${Constants.PORT}`));
