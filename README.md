@@ -7,5 +7,10 @@ npm install .
 
 ### Running
 ```
-npm run build & npm run start
+npm run start
+```
+
+### Testing
+```
+npm run test
 ```
