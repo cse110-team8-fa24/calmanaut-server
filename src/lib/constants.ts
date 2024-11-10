@@ -7,6 +7,6 @@ function throwEnv(name: string) : string {
 export const PORT = parseInt(process.env["PORT"] ?? throwEnv("PORT"));
 export const SECRET = process.env["SECRET"] ?? throwEnv("SECRET");
 export const PG_URL = process.env["PG_URL"] ?? throwEnv("PG_URL");
-export const ORIGIN = process.env["ORIGIN"] ?? "http://localhost:5173";
+export const ORIGINS = process.env["ORIGINS"] ?? "http://localhost:3000";
 export const HTTPS = process.env["HTTPS"] === "true";
 export const NODE_ENV = process.env["NODE_ENV"] ?? "production";
