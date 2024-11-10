@@ -10,7 +10,7 @@ console.log(Constants);
 export const app = Express();
 
 const corsOptions: Cors.CorsOptions = {
-    origin: Constants.ORIGIN,
+    origin: Constants.ORIGINS.split(";"),
     exposedHeaders: ["Location", "Set-Cookie"],
     credentials: true,
     maxAge: 604800,
