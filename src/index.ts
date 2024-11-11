@@ -5,7 +5,7 @@ import ExpressSession from "express-session";
 import * as Authentication from "@~/lib/authentication.js";
 import * as Constants from "@~/lib/constants.js";
 
-console.log(Constants);
+console.log("Constants: ", Constants);
 
 export const app = Express();
 
@@ -18,13 +18,18 @@ const corsOptions: Cors.CorsOptions = {
 
 const sessionOptions: ExpressSession.SessionOptions = {
     secret: Constants.SECRET,
+    proxy: Constants.HTTPS,
     resave: false,
     saveUninitialized: true,
     cookie: {
         maxAge: 604800_000,
         secure: Constants.HTTPS,
+        sameSite: Constants.HTTPS ? "none" : false,
     },
 };
+
+if (Constants.HTTPS)
+    app.set("trust proxy", 1);
 
 app.use(Cors(corsOptions));
 app.use(ExpressSession(sessionOptions));
