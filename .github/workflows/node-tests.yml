@@ -1,0 +1,28 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo systemctl start postgresql.service
+      - run: sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+      - run: sudo -u postgres createdb calmanaut
+      - run: sudo -u postgres psql -U postgres -d calmanaut < database.dmp
+      - run: npm ci
+      - name: create .env
+        run: printf 'SECRET="githubactions"\nPG_URL="postgresql://postgres:postgres@localhost:5432/calmanaut"\nPORT="4001"\nHTTPS="false"\nORIGINS="*"' >> .env
+      - run: npm run build --if-present
+        env:
+          CI: ""
+      - run: npm test
