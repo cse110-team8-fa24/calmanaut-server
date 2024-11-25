@@ -38,6 +38,9 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 
 (await import("@~/routes/root.js")).register(app);
+(await import("@~/routes/calendar.js")).register(app);
+(await import("@~/routes/progress.js")).register(app);
+
 
 app.use((_req: Express.Request, res: Express.Response) => {
     res.status(404).send("API endpoint does not exist");
