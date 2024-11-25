@@ -5,7 +5,8 @@ import ExpressSession from "express-session";
 import * as Authentication from "@~/lib/authentication.js";
 import * as Constants from "@~/lib/constants.js";
 
-console.log("Constants: ", Constants);
+if (Constants.NODE_ENV !== "test")
+    console.log("Constants: ", Constants);
 
 export const app = Express();
 
@@ -38,12 +39,12 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 
 (await import("@~/routes/root.js")).register(app);
-(await import("@~/routes/calendar.js")).register(app);
-(await import("@~/routes/progress.js")).register(app);
-
 
 app.use((_req: Express.Request, res: Express.Response) => {
     res.status(404).send("API endpoint does not exist");
 });
 
-export const server = app.listen(Constants.PORT, () => console.log(`Listening on port ${Constants.PORT}`));
+export const server = app.listen(Constants.PORT, () => {
+    if (Constants.NODE_ENV !== "test")
+        console.log(`Listening on port ${Constants.PORT}`);
+});
