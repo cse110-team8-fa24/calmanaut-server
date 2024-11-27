@@ -2,6 +2,7 @@ export type UserPublic = {
     username: string,
     createDate: Date,
     id: number,
+    meditationDates: string[];
 };
 
 export type User = UserPublic & {
@@ -13,6 +14,7 @@ export namespace UserPublic {
         username: "",
         createDate: new Date(0),
         id: 0,
+        meditationDates: [],
     };
 }
 

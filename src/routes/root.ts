@@ -7,5 +7,6 @@ export function register(upper: Express.Router) {
     import("./login.js").then(m => m.register(router));
     import("./logout.js").then(m => m.register(router));
     import("./options.js").then(m => m.register(router));
+    import("./calendar/root.js").then(m => m.register(router));
     import("./users/root.js").then(m => m.register(router));
 }

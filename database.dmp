@@ -28,7 +28,8 @@ CREATE TABLE public.users (
     username character varying(16) NOT NULL,
     passhash character(60) NOT NULL,
     id integer NOT NULL,
-    "createDate" timestamp without time zone DEFAULT now() NOT NULL
+    "createDate" timestamp without time zone DEFAULT now() NOT NULL,
+    "meditationDates" character(10)[] DEFAULT (ARRAY[]::bpchar[])::character(1)[]
 );
 
 
@@ -69,8 +70,8 @@ COPY public.options (id, "musicKey", "imageKey") FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.users (username, passhash, id, "createDate") FROM stdin;
-dummydummy	$2b$13$4KdaJHYqx7IuSqEVXWEqluyMq7abvyB3VBVKpFqCK2k0IxIfkTNwm	0	2024-11-19 22:27:55.213037
+COPY public.users (username, passhash, id, "createDate", "meditationDates") FROM stdin;
+dummydummy	$2b$13$4KdaJHYqx7IuSqEVXWEqluyMq7abvyB3VBVKpFqCK2k0IxIfkTNwm	0	2024-11-19 22:27:55.213037	{1707-04-15,1929-01-15}
 \.
 
 
